@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<form action="" method="get">
+			<div>
+				<label for="tourName">여행 이름</label>
+				<input type="text" id="tourName" name="tourName" th:value="${tourName}"/>
+				<br/>
+				<label for="tourDays">여행 기간</label>
+				<input type="text" id="tourDays" name="tourDays" th:value="${tourDays}"/>
+				<br/>
+				<label for="depStartDay">출발 일</label>
+				<input type="text" id="depStartDay" name="depStartDay"
+					th:value="${depStartDay}"/> ~
+				<input type="text" id="depEndDay" name="depEndDay"
+					th:value="${depEndDay}"/>	
+				
+				<button type="submit">검색</button>
+			</div>
+		</form>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>순번</th>
+				<th>여행 이름</th>
+				<th>출발일</th>
+				<th>여행기간</th>
+				<th>가격</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="t : ${tours}">
+				<td th:text="${t.tourCode}">1</td>
+				<td th:text="${t.tourName}">울릉도 여행</td>
+				<td th:text="${#dates.format(t.depDay, 'yyyy-MM-dd')}">2023-12-31</td>
+				<td th:text="${t.tourDays} + '일'">2</td>
+				<td th:text="|${#numbers.formatInteger(t.basePrice,3,'COMMA')} 원|">300000</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

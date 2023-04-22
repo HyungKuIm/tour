@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>회 원 가 입</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<script>
+$(function(){
+	$("#signUp").click(function() {
+		$("#signUpForm").submit();
+	});
+	
+	$("#SignInTitle").click(function() {
+		location.href="/login";
+	});
+});
+</script>
+</head>
+<body>
+  <div class="signin">
+    <div class="back-img">
+      <div class="sign-in-text">
+        <h2 class="nonactive" id="SignInTitle">Sign In</h2>
+        <h2 class="active" id="SignUpTitle">Sign Up</h2>
+      </div><!--/.sign-in-text-->
+      <div class="layer">
+      </div><!--/.layer-->
+      <p class="point">&#9650;</p>
+    </div><!--/.back-img-->
+    <div class="form-section">
+		<form id="signUpForm" action="" method="post" th:object="${customer}">
+			<p>
+				<label for="customerName">이름</label>
+				<input type="text" id="customerName" th:field="*{customerName}" />
+				<span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}">Name Error</span>
+			</p>
+			<p>
+				<label for="customerBirth">생년월일(YYYY-MM-DD)</label>
+				<input type="text" id="customerBirth" th:field="*{customerBirth}" />
+				<span th:if="${#fields.hasErrors('customerBirth')}" th:errors="*{customerBirth}">Birthday Error</span>
+			</p>
+			<p>
+				<label for="customerJob">직업</label>
+				<input type="text" id="customerJob" th:field="*{customerJob}" />
+				<span th:if="${#fields.hasErrors('customerJob')}" th:errors="*{customerJob}">Job Error</span>
+			</p>
+			<p>
+				<label for="customerMail">E-mail</label>
+				<input type="text" id="customerMail" th:field="*{customerMail}" />
+				<span th:if="${#fields.hasErrors('customerMail')}" th:errors="*{customerMail}">Mail Error</span>
+			</p>
+			<p>
+				<label for="customerTel">전화번호</label>
+				<input type="text" id="customerTel" th:field="*{customerTel}" />
+				<span th:if="${#fields.hasErrors('customerTel')}" th:errors="*{customerTel}">Tel Error</span>
+			</p>
+			<p>
+				<label for="customerPost">우편번호</label>
+				<input type="text" id="customerPost" th:field="*{customerPost}" />
+				<span th:if="${#fields.hasErrors('customerPost')}" th:errors="*{customerPost}">Post Error</span>
+			</p>
+			<p>
+				<label for="customerAdd">주소</label>
+				<input type="text" id="customerAdd" th:field="*{customerAdd}" />
+				<span th:if="${#fields.hasErrors('customerAdd')}" th:errors="*{customerAdd}">Address Error</span>
+			</p>
+			<p>
+				<label for="customerPass">비밀번호</label>
+				<input type="password" id="customerPass" th:field="*{customerPass}" />
+				<span th:if="${#fields.hasErrors('customerPass')}" th:errors="*{customerPass}">Password Error</span>
+			</p>
+			<p>
+				<label for="customerPassConfirm">비밀번호 확인</label>
+				<input type="password" id="customerPassConfirm" th:field="*{customerPassConfirm}" />
+				<span th:if="${#fields.hasErrors('customerPassConfirm')}" th:errors="*{customerPassConfirm}">Pass Confirm Error</span>
+			</p>
+		</form>
+     
+     
+    </div> <!-- 폼 -->
+      
+    <button id="signUp" class="sign-in-btn mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--raised mdl-button--colored">
+      회원 가입
+    </button><!--/button-->  
+ </div><!--/.signin-->
+</body>
+</html>
+
+
+
+
+
+
+
+
