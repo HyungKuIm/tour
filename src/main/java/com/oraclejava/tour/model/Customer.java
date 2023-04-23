@@ -32,8 +32,9 @@ public class Customer {
 	private String customerName;
 
 	@NotEmpty
-	@Pattern(regexp = "[0-9a-zA-z]+")
-	@Size(min = 4)
+//	@Pattern(regexp = "[0-9a-zA-z]+")
+	// 커스텀 벨리데이터를 사용할 경우 에러가 발생함
+	@Size(min = 4, max = 100)
 	private String customerPass;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -51,7 +52,7 @@ public class Customer {
 	@Pattern(regexp = "[0-9-]+")
 	private String customerTel;
 
-	@Pattern(regexp = "[0-9]{3}")
+	@Pattern(regexp = "[0-9]{5}")
 	private String customerPost;
 
 	@NotEmpty
@@ -61,7 +62,7 @@ public class Customer {
 	
 	@Transient
 	@NotEmpty
-	@Pattern(regexp = "[0-9a-zA-z]+")
-	@Size(min = 4)
+//	@Pattern(regexp = "[0-9a-zA-z]+")
+	@Size(min = 4, max = 100)
 	private String customerPassConfirm;
 }
